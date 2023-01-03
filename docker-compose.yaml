@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  tor:
+    image: dockage/tor-privoxy:latest
+    ports:
+      - "127.0.0.1:9050:9050" # Tor proxy
+      - "127.0.0.1:9051:9051" # Tor control port
+      - "127.0.0.1:8118:8118" # Privoxy
+    volumes:
+      - './torrc:/etc/tor/torrc:ro'
+    network_mode: host
+    restart: always
